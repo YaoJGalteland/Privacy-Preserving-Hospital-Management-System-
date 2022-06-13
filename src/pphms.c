@@ -7,7 +7,7 @@
 struct data{
     unsigned int len;
     int ik;
-    char ciphertext[100];
+    char ciphertext[200];
 };
 
 struct key{
@@ -116,15 +116,18 @@ int main()
                     keygen(mip);  //  Key generation algorithm. Generate an initial epoch key.
                     break;
             case 2:
+                    system("clear");
                     addRecord(mip);  //  Add a new encrypted record.                   
                     break;
             case 3:
+                    system("clear");
                     modify(mip);   // Modify an encrypted record.
                     break;  
             case 4:
                     del();  // Delete a record.
                     break;  
             case 5:
+                    system("clear");
                     readRecord(mip);  //  Read a record, output the decrypted values.                 
                     break;
             case 6:
@@ -602,18 +605,13 @@ void dec(struct data d, big decryptionKey, miracl *mip)
 /*  Read all encrpyted data  */
 void read()
 {
-    FILE *fp = fopen("HealthData","r+");
+    FILE *fp = fopen("HealthData","r");
     
     rewind(fp);                        
     while(fread(&pat,recsize_pat,1,fp)==1)
     {
-        printf("\n%-20s= %lu", "Personal number",pat.personalNumber);  
-        printf("\n%-20s= %s", "Name",pat.name.ciphertext);  
-        printf("\n%-20s= %s", "Age",pat.age.ciphertext);  
-        printf("\n%-20s= %s", "Phone number",pat.phoneNumber.ciphertext);  
-        printf("\n%-20s= %s", "Address",pat.address.ciphertext);  
-        printf("\n%-20s= %s","Disease",pat.disease.ciphertext);
-        printf("\n%-20s= %s\n", "Comment",pat.comment.ciphertext);  
+        printf("\n\n********** %s: %lu **********\n", "Personal number",pat.personalNumber);  
+        printf("\n%s %s %s %s %s %s", pat.name.ciphertext, pat.age.ciphertext, pat.phoneNumber.ciphertext, pat.address.ciphertext, pat.disease.ciphertext, pat.comment.ciphertext);  
     }
     fclose(fp);       
 }
