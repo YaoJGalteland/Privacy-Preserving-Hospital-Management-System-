@@ -77,7 +77,7 @@ int main()
         mip=mirsys(36,MAXBASE);
     #endif
     
-    printf("\n********** UPDATABLE ENCRYPTION (SHINE): **********\n");
+    printf("\n********** Privacy Preserving Hospital Management System: **********\n");
 
     while(1)
     {
